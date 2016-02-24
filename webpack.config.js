@@ -16,6 +16,9 @@ module.exports = {
       loader: "babel-loader",
       query: { presets: ["react"]},
       exclude: /node_modules/
+    },{
+      test: /\.scss$/,
+      loader: "style-loader!css-loader!sass-loader"
     }]
   }
 };
