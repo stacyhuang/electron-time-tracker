@@ -1,0 +1,88 @@
+$light-gray: #F5F5F5;
+$light-blue: #C3D7DF;
+$dark-gray: #67727A;
+$dark-blue: #67727A;
+$orange: #D75C37;
+
+.app {
+  padding: 0;
+  border: solid $light-gray 1px;
+
+  .button {
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .taskForm {
+    padding-top: 20px;
+    height: 65px;
+    border-bottom: solid $light-gray 1px;
+
+    .button {
+      color: $dark-blue;
+    }
+
+    .input-new-project {
+      width: 100%;
+    }
+
+    & input,
+    & input:focus {
+      outline: none !important;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .task {
+    border-bottom: solid $light-gray 1px;
+
+    .totalTime,
+    .button {
+      padding: 20px 5px;
+      height: 65px
+    }
+
+    .task-description {
+      padding: 10px 5px;
+
+      .project-name {
+        font-weight: bold;
+        line-height: 24px;
+        font-size: 18px;
+      }
+
+      .client-name {
+        font-size: 14px;
+        color: $dark-gray;
+      }
+    }
+
+    .totalTime {
+      width: 65px;
+      color: white;
+      background-color: $orange;
+    }
+
+    .button {
+      color: $light-blue;
+    }
+  }
+
+  .sidebar-collapsed {
+    display: none;
+  }
+
+  .sidebar {
+    border-left: solid $light-gray 1px;
+    padding: 20px;
+
+    input {
+      margin-bottom: 10px;
+    }
+  }
+}
