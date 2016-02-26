@@ -2,12 +2,14 @@ var React = require("react");
 var TaskForm = require("./TaskForm");
 var TaskList = require("./TaskList");
 var Sidebar = require("./Sidebar");
+var classNames = require("classnames");
+var ipcRenderer = electron.ipcRenderer;
 
 var timer;
 
 var App = React.createClass({
   getInitialState: function() {
-    return {tasks: {}, editing: {}};
+    return {tasks: {}, editing: {}, sidebarCollapsed: true};
   },
   onAddTask: function(id, task) {
     var tasks = this.state.tasks;
@@ -18,7 +20,8 @@ var App = React.createClass({
   onUpdateTask: function(id, task) {
     var tasks = this.state.tasks;
     tasks[id] = task;
-    this.setState({tasks: tasks})
+    this.setState({tasks: tasks, sidebarCollapsed: true})
+    ipcRenderer.send("toggle-sidebar");
   },
   onToggleTime: function(id) {
     var tasks = this.state.tasks;
@@ -37,7 +40,17 @@ var App = React.createClass({
   onToggleSidebar: function(id) {
     var tasks = this.state.tasks;
     var task = tasks[id];
-    this.setState({editing: tasks[id]});
+
+    if (this.state.sidebarCollapsed) {
+      this.setState({editing: tasks[id], sidebarCollapsed: false});
+      ipcRenderer.send("toggle-sidebar");
+    } else {
+      if (this.state.editing.id !== id) {
+        this.setState({editing: tasks[id]});
+      } else {
+        ipcRenderer.send("toggle-sidebar");
+      }
+    }
   },
   startTimer: function(id) {
     timer = setInterval(function() {
@@ -50,9 +63,10 @@ var App = React.createClass({
     window.clearInterval(timer);
   },
   render: function() {
+    var sidebarClass = classNames("sidebar-container", {"sidebar-collapsed": this.state.sidebarCollapsed});
     return (
       <div className="app row">
-        <div className="col-xs-6">
+        <div className="task-container">
           <TaskForm onAddTask={this.onAddTask} />
           <TaskList
             tasks={this.state.tasks}
@@ -60,7 +74,7 @@ var App = React.createClass({
             onToggleSidebar={this.onToggleSidebar}
           />
         </div>
-        <div className="col-xs-6">
+        <div className={sidebarClass}>
           <Sidebar task={this.state.editing} onUpdateTask={this.onUpdateTask} />
         </div>
       </div>

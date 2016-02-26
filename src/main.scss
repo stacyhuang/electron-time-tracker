@@ -1,8 +1,12 @@
 $light-gray: #F5F5F5;
 $light-blue: #C3D7DF;
 $dark-gray: #67727A;
-$dark-blue: #67727A;
+$dark-blue: #6991AC;
 $orange: #D75C37;
+
+.row {
+  margin: 0;
+}
 
 .app {
   padding: 0;
@@ -11,10 +15,6 @@ $orange: #D75C37;
   .button {
     cursor: pointer;
     text-align: center;
-  }
-
-  .row {
-    margin: 0;
   }
 
   .taskForm {
@@ -34,7 +34,6 @@ $orange: #D75C37;
     & input:focus {
       outline: none !important;
       border: none;
-      box-shadow: none;
     }
   }
 
@@ -42,9 +41,17 @@ $orange: #D75C37;
     border-bottom: solid $light-gray 1px;
 
     .totalTime,
+    .task-description,
     .button {
-      padding: 20px 5px;
       height: 65px
+    }
+
+    .totalTime {
+      padding: 20px 5px;
+      width: 65px;
+      color: white;
+      background-color: $orange;
+      border-radius: 5px;
     }
 
     .task-description {
@@ -62,27 +69,34 @@ $orange: #D75C37;
       }
     }
 
-    .totalTime {
-      width: 65px;
-      color: white;
-      background-color: $orange;
+    .button {
+      padding: 20px 5px;
+      color: $light-blue;
+    }
+  }
+
+  .task-container,
+  .sidebar-container {
+    width: 398px;
+    height: 598px;
+    float: left;
+    border-left: solid $light-gray 1px;
+  }
+
+  .sidebar {
+    padding: 20px;
+
+    button {
+      background-color: $dark-blue;
+      border-color: $dark-blue;
     }
 
-    .button {
-      color: $light-blue;
+    input {
+      margin-bottom: 10px;
     }
   }
 
   .sidebar-collapsed {
     display: none;
-  }
-
-  .sidebar {
-    border-left: solid $light-gray 1px;
-    padding: 20px;
-
-    input {
-      margin-bottom: 10px;
-    }
   }
 }

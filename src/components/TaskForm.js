@@ -1,5 +1,6 @@
 var React = require("react");
 var Button = require("./Button");
+var _ = require("lodash");
 
 var TaskForm = React.createClass({
   propTypes: {
