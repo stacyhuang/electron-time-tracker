@@ -1,5 +1,5 @@
 # Electron Time Tracker
-Time tracker desktop application built with Electron and React
+A time tracker desktop application built with Electron and React
 
 
 ![image](http://c8.staticflickr.com/8/7789/26998303471_ffa267d2c3_c.jpg)
@@ -11,14 +11,10 @@ Time tracker desktop application built with Electron and React
 npm install
 ```
 
-## Run development server
+## Run
 
 ```
-npm run watch
-```
+npm run build
 
-## Start application
-
-```
 npm start
 ```
