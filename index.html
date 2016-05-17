@@ -10,15 +10,7 @@
     <script>
       // declare electron as a global variable to resolve electron module not found error caused by webpack overriding the require function
       var electron = require("electron");
-      var bundlePath = './build/bundle.js';
-
-      if (typeof process !== 'undefined' && process.env.ENVIRONMENT === 'DEV') {
-        bundlePath = 'http://localhost:8080/build/bundle.js';
-      }
-
-      var bundleScriptEl = document.createElement('script');
-      bundleScriptEl.src = bundlePath;
-      document.currentScript.parentNode.insertBefore(bundleScriptEl, document.currentScript);
     </script>
+    <script type="application/javascript" src="build/bundle.js"></script>
   </body>
 </html>
